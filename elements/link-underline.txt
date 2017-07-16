@@ -1,0 +1,58 @@
+Управляем высотой подчеркивания у ссылки
+
+
+
+1) При помощи background-image
+
+Для начала определяемся с тем, какого цвета нам нужно подчеркивание. После в Photoshop создаем gif картинку 1 на 1 пиксель с цветом фона, который мы выбрали.
+
+Имея gif файл, топаем сюда https://www.base64-image.de/ (или гуглим convert image to base64) и переводим нашу картинку в код.
+
+После в CSS прописываем следующие свойства у нужной ссылки:
+
+a {
+  display: inline;
+  text-decoration: none;
+  background: url(data:image/gif;base64,R0lGODlhAQABAIAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICTAEAOw==); // Наш gif в кодировке base64
+  background-repeat: repeat-x;
+  background-position: center 1px; // Через это значение управляем высотой подчеркивания
+}
+
+
+
+2) При помощи border-bottom
+
+HTML
+
+<a href="#">
+  <span>Lorem ipsum</span>
+</a>
+
+
+CSS
+
+a {
+  display: block;
+  margin: 0;
+  padding: 0 0 3px 0;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
+}
+
+span {
+  display: inline;
+  margin: 0;
+  padding: 0 0 2px 0;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: red;
+  border-bottom: 1px solid red;
+}
